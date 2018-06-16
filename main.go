@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
@@ -13,7 +14,7 @@ import (
 )
 
 const address = "0xb5A5F22694352C15B00323844aD545ABb2B11028"
-const connURL = ".."
+const connURL = ""
 
 func main() {
 
@@ -59,5 +60,8 @@ func main() {
 			log.Fatal(err)
 		}
 		fmt.Println(tx.Hash().String())
+		// since we don't read off pending state data, if we don't sleep then we will waste gas
+		// sleep for 2 minutes, which should give enough time for the tx to be processed
+		time.Sleep(time.Minute * 2)
 	}
 }
