@@ -14,7 +14,7 @@ import (
 )
 
 const address = "0xb5A5F22694352C15B00323844aD545ABb2B11028"
-const connURL = "https://mainnet.infura.io/"
+const connURL = ""
 
 func main() {
 
@@ -65,7 +65,7 @@ func main() {
 		}
 		fmt.Println(tx.Hash().String())
 		// since we don't read off pending state data, if we don't sleep then we will waste gas
-		// sleep for 2 minutes, which should give enough time for the tx to be processed
+		// sleep for 2 minutes, which should give enough timedon't sleep then we will waste gas
 		time.Sleep(time.Minute * 2)
 	}
 }
