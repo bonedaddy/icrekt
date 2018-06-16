@@ -47,11 +47,15 @@ func main() {
 		transfersEnabled, err := contract.TokenTransfer(&bind.CallOpts{Pending: false})
 		if err != nil {
 			fmt.Println("error reading transfer state ", err)
+			fmt.Println("sleeping for 30 seconds")
+			time.Sleep(time.Second * 30)
 			continue
 		}
 		// if transfers aren't enabled, then we skip
 		if !transfersEnabled {
 			fmt.Println("transfers already disabled")
+			fmt.Println("sleeping for 30 seconds")
+			time.Sleep(time.Second * 30)
 			continue
 		}
 		// from here on out spends real ether
