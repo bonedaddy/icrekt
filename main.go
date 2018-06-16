@@ -13,7 +13,7 @@ import (
 )
 
 const address = "0xb5A5F22694352C15B00323844aD545ABb2B11028"
-const connURL = "https://mainnet.infura.io/..."
+const connURL = ".."
 
 func main() {
 
@@ -40,10 +40,24 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	// from here on out spends real ether
-	tx, err := contract.DisableTokenTransfer(auth)
-	if err != nil {
-		log.Fatal(err)
+
+	for {
+		// don't read pending state data
+		transfersEnabled, err := contract.TokenTransfer(&bind.CallOpts{Pending: false})
+		if err != nil {
+			fmt.Println("error reading transfer state ", err)
+			continue
+		}
+		// if transfers aren't enabled, then we skip
+		if !transfersEnabled {
+			fmt.Println("transfers already disabled")
+			continue
+		}
+		// from here on out spends real ether
+		tx, err := contract.DisableTokenTransfer(auth)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println(tx.Hash().String())
 	}
-	fmt.Println(tx.Hash().String())
 }
