@@ -14,7 +14,7 @@ import (
 )
 
 const address = "0xb5A5F22694352C15B00323844aD545ABb2B11028"
-const connURL = ""
+const connURL = "https://mainnet.infura.io/"
 
 func main() {
 
