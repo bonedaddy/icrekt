@@ -1,6 +1,6 @@
 # ICRekt
 
-*Note: Original discover of bug goes to https://github.com/icon-foundation/ico/issues/3
+*Note: Original discover of bug goes to the opener of issue #3 on the ICO repository of the icon-foundation github  https://github.com/icon-foundation/ico/issues/3
 
 
 Purely proof of concept, and designed to demonstrate how severe "minor" smart contract bugs can really get. This is *entirely* proof of concept and is in no way meant to be ran or executed. It allows the user to DOS the ICX contract, preventing transfers for as long as there is ethereum in the calling account to pay the gas.
